@@ -11,7 +11,7 @@ class UsersController extends Controller
     }
     public function registration()
     {
-        $user = User::getUser(isset($data['id']) ? $data['id'] : 0);
+        $user = User::createUser();
         return ['user' => $user];
     }
     public function login($data)
