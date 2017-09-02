@@ -19,21 +19,12 @@ class User extends Model {
         ];
     }
 
-    public static function createUser()
+    public static function createUser($user,$password)
     {
-
-      if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $login = $_POST['newuser'];
-        $password = md5($_POST['newpass']);
-
-        var_dump($login,$password);
-
         return db::getInstance()->Query(
             'INSERT INTO users (name, password, status) VALUES (:user, :password, :status)',
-            //SELECT id, name FROM users WHERE status=:status AND id = :user_id',
             ['status' => Status::Active, 'user' => $user, 'password' => $password]);
-      }
+
     }
 
     public static function getUser($userId)

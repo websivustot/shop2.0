@@ -11,6 +11,7 @@ class App
         if (php_sapi_name() !== 'cli' && isset($_SERVER) && isset($_GET)) {
             self::web(isset($_GET['path']) ? $_GET['path'] : '');
         }
+        
     }
 
     protected static function web($url)
@@ -40,11 +41,11 @@ class App
             $methodName = isset($_GET['action']) ? $_GET['action'] : 'index'; // имя действия, если нет - index
             $controller = new $controllerName(); // создаем объект класса с именем контроллера, напр IndexController
             $data = [ // данные на основе методов контроллера
-                'content_data' => $controller->$methodName($_GET),
+                'content_data' => $controller->$methodName($_GET), //данные контента формируются при выполнении метода контроллера
                 'title' => $controller->title,
                 'categories' => Category::getCategories(0)
             ];
-
+            //var_dump($data);
             $view = $controller->view . '/' . $methodName . '.html'; // формируем имя шаблона
 
             if (!isset($_GET['asAjax'])) {  // если не аякс выводим в шаблон
