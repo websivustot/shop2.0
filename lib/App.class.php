@@ -6,12 +6,12 @@ class App
     {
         date_default_timezone_set('Europe/Moscow');
         // создаем объекn singleton из класса db
-        db::getInstance()->Connect(Config::get('db_user'), Config::get('db_password'), Config::get('db_base'));
+        //db::getInstance();
         // проверяем, если не в консольном режиме (cli) и есть суперглобальный массив, то разбираем строку в методе web()
         if (php_sapi_name() !== 'cli' && isset($_SERVER) && isset($_GET)) {
             self::web(isset($_GET['path']) ? $_GET['path'] : '');
         }
-        
+
     }
 
     protected static function web($url)

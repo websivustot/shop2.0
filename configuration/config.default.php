@@ -4,6 +4,10 @@ $config['db_password'] = '';
 $config['db_base'] = 'shop2';
 $config['db_host'] = 'localhost';
 $config['db_charset'] = 'UTF-8';
+define("MYSQL_USER", "root");
+define("MYSQL_PASSWORD", "");
+define("MYSQL_DB", "shop2");
+define("MYSQL_SERVER", "localhost");
 
 $config['path_root'] = __DIR__;
 $config['path_public'] = $config['path_root'] . '/../public';
