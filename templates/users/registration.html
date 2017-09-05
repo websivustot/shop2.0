@@ -1,6 +1,9 @@
 {% include 'header.html' %}
 <h1>Регистрация пользователя</h1>
-
+{{ content_data.message }}
+{% if content_data.user != "" %}
+Привет, {{ content_data.user }}
+{% else %}
 <form class="form-horizontal" method="post">
  <div class="form-group">
    <label class="control-label col-sm-2" for="email">Email:</label>
@@ -27,5 +30,8 @@
    </div>
  </div>
 </form>
+<a href="/users/login/">Войдите</a> или зарегистрируйтесь</a>.
+{% endif %}
+
 
 {% include 'footer.html' %}

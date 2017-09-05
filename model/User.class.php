@@ -21,9 +21,11 @@ class User extends Model {
 
     public static function createUser($user,$password)
     {
-        return db::getInstance()->Query(
-            'INSERT INTO users (name, password, status) VALUES (:user, :password, :status)',
-            ['status' => Status::Active, 'user' => $user, 'password' => $password]);
+        $id = db::getInstance()->Insert("users",
+            ['status' => Status::Active, 'name' => $user, 'password' => $password]);
+        if ($id) {
+          return $user;
+        }
 
     }
 
@@ -33,5 +35,10 @@ class User extends Model {
             'SELECT id, name FROM users WHERE status=:status AND id = :user_id',
             ['status' => Status::Active, 'user_id' => $userId]);
 
+    }
+    public static function isUser($userName)
+    {
+      return db::getInstance()->Select('SELECT id, name FROM users WHERE name = :name',
+      ['name' => $userName]);
     }
 }
