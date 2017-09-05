@@ -32,10 +32,20 @@ class UsersController extends Controller
 
 
     }
-    public function login($data)
+    public function login()
     {
-        $user = User::getUser(isset($data['id']) ? $data['id'] : 0);
-        return ['user' => $user];
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        if ($_POST['email']) $login = $_POST['email'];
+        if ($_POST['pwd']) $password = md5($_POST['pwd']);
+
+        $userData = User::getUser($login, $password);
+          //var_dump($userData);
+        if ($userData != null) {
+          return ['user' => $userData[0][name]];
+        }
+        return  ['message' => 'Неверное имя пользователя или пароль!'];
+      }
     }
 }
 ?>

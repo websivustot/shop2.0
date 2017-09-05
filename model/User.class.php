@@ -29,11 +29,11 @@ class User extends Model {
 
     }
 
-    public static function getUser($userId)
+    public static function getUser($login, $password)
     {
         return db::getInstance()->Select(
-            'SELECT id, name FROM users WHERE status=:status AND id = :user_id',
-            ['status' => Status::Active, 'user_id' => $userId]);
+            'SELECT id, name FROM users WHERE status=:status AND name = :name AND password = :password',
+            ['status' => Status::Active, 'name' => $login, 'password' => $password]);
 
     }
     public static function isUser($userName)
