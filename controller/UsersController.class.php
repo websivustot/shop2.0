@@ -34,6 +34,7 @@ class UsersController extends Controller
     }
     public function login()
     {
+
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($_POST['email']) $login = $_POST['email'];
@@ -42,10 +43,22 @@ class UsersController extends Controller
         $userData = User::getUser($login, $password);
           //var_dump($userData);
         if ($userData != null) {
-          return ['user' => $userData[0][name]];
+          $_SESSION['user_name'] = $userData[0]['name'];
+          return ['user' => $userData[0]['name']];
         }
         return  ['message' => 'Неверное имя пользователя или пароль!'];
       }
+    }
+
+    public function logout()
+    {
+      if (isset($_SESSION['user_name'])) {
+
+      unset($_SESSION['user_name']);
+      return ['message' => 'Вы вышли из аккаунта'];
+
+    }
+      return  ['message' => 'Не найдено текущего пользователя'];
     }
 }
 ?>
