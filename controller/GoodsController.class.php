@@ -1,8 +1,8 @@
 <?php
-class CategoriesController extends Controller
+class GoodsController extends Controller
 {
 
-    public $view = 'categories';
+    public $view = 'goods';
 
     public function index($data)
     {
@@ -11,6 +11,6 @@ class CategoriesController extends Controller
         $goods = Good::getGoods(isset($data['id']) ? $data['id'] : 0);
         var_dump($goods);
         return ['subcategories' => $categories, 'goods' => $goods];
-    }
+    }    
 }
 ?>

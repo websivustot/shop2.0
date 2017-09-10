@@ -32,7 +32,15 @@
         <ul>
             {% for category in categories %}
             <li>
-                <a href="/categories/?id={{ category.id_category }}" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
+                <a href="/categories/{{ category.id_category }}/" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
+
+                <div id="catalog-data">
+                    <ul>
+                        {% for subcategory in content_data.subcategories %}
+                        <li><a href="/categories/{{ subcategory.id_category }}/">{{ subcategory.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </li>
             {% endfor %}
         </ul>

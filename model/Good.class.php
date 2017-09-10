@@ -26,7 +26,7 @@ class Good extends Model {
     public static function getGoods($categoryId)
     {
         return db::getInstance()->Select(
-            'SELECT id_category, `name`, price FROM goods WHERE id_category = :category AND status=:status',
+            'SELECT id, id_category, `name`, price FROM goods WHERE id_category = :category AND status=:status',
             ['status' => Status::Active, 'category' => $categoryId]);
     }
 }
