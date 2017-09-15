@@ -8,29 +8,29 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="js/category.js"></script>
     <body>
-      <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Интернет-магазин</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Домой</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      {% if content_data.user != "" %}
-      <li><a href="/users/"><span class="glyphicon glyphicon-user"></span> Пользователь: {{ content_data.user }}</a></li>
-      <li><a href="/users/logout/"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
-      {% else %}
-      <li><a href="/users/registration/"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-      <li><a href="/users/login/"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Интернет-магазин</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Домой</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if content_data.user != "" %}
+              <li><a href="/users/"><span class="glyphicon glyphicon-user"></span> Пользователь: {{ content_data.user }}</a></li>
+              <li><a href="/users/logout/"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
+              {% else %}
+              <li><a href="/users/registration/"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+              <li><a href="/users/login/"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
         <div class="container">
           <div class="row">
-            <div class="col-lg-3">
-              <h1>Caterories</h1>
+            <div class="col-sm-3">
+              <h1>Категории</h1>
               <ul class="list-group">
                   {% for category in categories %}
                   <li class="list-group-item">

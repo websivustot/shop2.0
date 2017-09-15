@@ -14,4 +14,24 @@
         {% endfor %}
     </ul>
 </div>
+
+<div class="col-sm-9">
+  <div class="row">
+    {% for good in content_data.goods %}
+    <div class="col-sm-4 panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>{{ good.name }}</h4></div>
+        <div class="panel-body">
+          <img class="img-responsive img-thumbnail" src="/img/700x400.png" alt="">
+          <h5>{{ good.price }}</h5>
+          <p>{{ good.description }}</p>
+        </div>
+        <div class="panel-footer">
+          <a href="/goods/{{good.id}}/">Подробнее</a></div>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
 {% include 'footer.html' %}
