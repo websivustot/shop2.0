@@ -11,5 +11,12 @@ class IndexController extends Controller
         $this->title .= ' | Главная';
     }
 
+    public function index()
+    {
+        $goods = Good::getGoods(0);
+        var_dump($goods);
+        return ['goods' => $goods];
+    }
+
 
 }

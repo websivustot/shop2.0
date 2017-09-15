@@ -3,6 +3,7 @@
     <head>
         <title>{{ title }}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="js/category.js"></script>
@@ -14,8 +15,6 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Домой</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {% if content_data.user != "" %}
@@ -29,18 +28,14 @@
   </div>
 </nav>
         <div class="container">
-        <ul>
-            {% for category in categories %}
-            <li>
-                <a href="/categories/{{ category.id_category }}/" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
-
-                <div id="catalog-data">
-                    <ul>
-                        {% for subcategory in content_data.subcategories %}
-                        <li><a href="/categories/{{ subcategory.id_category }}/">{{ subcategory.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+          <div class="row">
+            <div class="col-lg-3">
+              <h1>Caterories</h1>
+              <ul class="list-group">
+                  {% for category in categories %}
+                  <li class="list-group-item">
+                      <a href="/categories/{{ category.id_category }}/" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
+                  </li>
+                  {% endfor %}
+              </ul>
+            </div>
