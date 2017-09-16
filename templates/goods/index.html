@@ -1,21 +1,28 @@
 {% include 'header.html' %}
-<div id="catalog-data">
-    <ul>
+<div class="col-sm-9">
+  <div class="row">
+    <ul class="nav nav-pills">
         {% for subcategory in content_data.subcategories %}
         <li><a href="/categories/{{ subcategory.id_category }}/">{{ subcategory.name }}</a></li>
         {% endfor %}
     </ul>
-</div>
-<div>
-  {{ good.id }}
-  {{ good.name }}
-  {{ good.price }}
-</div>
-<div id="goods-data">
-    <ul>
-        {% for good in content_data.goods %}
-        <li><a href="/goods/{{good.id}}/">{{ good.name }}</a></li>
-        {% endfor %}
-    </ul>
+  </div>
+  <div class="row top15">
+    {% for good in content_data.goods %}
+    <div class="col-sm-9 panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>{{ good.name }}</h4></div>
+        <div class="panel-body">
+          <img class="img-responsive img-thumbnail" src="/img/700x400.png" alt="">
+          <h5>{{ good.price }}</h5>
+          <p>{{ good.description }}</p>
+        </div>
+        <div class="panel-footer">
+          <a href="/goods/{{good.id}}/">Подробнее</a></div>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
 </div>
 {% include 'footer.html' %}

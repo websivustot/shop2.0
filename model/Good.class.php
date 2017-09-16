@@ -33,4 +33,10 @@ class Good extends Model {
             'SELECT id, id_category, `name`, description, price FROM goods ' . $where,
             ['status' => Status::Active, 'category' => $categoryId]);
     }
+    public static function getGood($goodId)
+    {
+        return db::getInstance()->Select(
+            'SELECT id, id_category, `name`, description, price FROM goods WHERE id = :good_id AND status=:status',
+            ['status' => Status::Active, 'good_id' => $goodId]);
+    }
 }

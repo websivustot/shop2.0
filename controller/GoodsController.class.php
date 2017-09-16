@@ -6,10 +6,13 @@ class GoodsController extends Controller
 
     public function index($data)
     {
-        $categories = Category::getCategories(isset($data['id']) ? $data['id'] : 0);
-        
-        $goods = Good::getGoods(isset($data['id']) ? $data['id'] : 0);
-        var_dump($goods);
+        //var_dump($data);
+        $goods = Good::getGood($data['id']);
+        //var_dump($goods[0]["id_category"]);
+        $categories = Category::getCategories($goods[0]['id_category']);
+
+
+        //var_dump($categories);
         return ['subcategories' => $categories, 'goods' => $goods];
     }
 }

@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function index()
     {
         $goods = Good::getGoods(0);
-        var_dump($goods);
+        //var_dump($goods);
         return ['goods' => $goods];
     }
 

@@ -8,6 +8,8 @@
     </ul>
   </div>
   <div class="row top15">
+    {% if content_data.message %}<div class="alert alert-danger">{{ content_data.message }}</div>
+    {% else %}
     {% for good in content_data.goods %}
     <div class="col-sm-4 panel-group">
       <div class="panel panel-default">
@@ -23,6 +25,11 @@
       </div>
 
     {% endfor %}
+    {% endif %}
+
+
+
+
   </div>
 </div>
 {% include 'footer.html' %}
