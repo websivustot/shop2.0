@@ -1,22 +1,13 @@
 {% include 'header.html' %}
-<div id="catalog-data">
-    <ul>
+<div class="col-sm-9">
+  <div class="row">
+    <ul class="nav nav-pills">
         {% for subcategory in content_data.subcategories %}
         <li><a href="/categories/{{ subcategory.id_category }}/">{{ subcategory.name }}</a></li>
         {% endfor %}
     </ul>
-</div>
-
-<div id="goods-data">
-    <ul>
-        {% for good in content_data.goods %}
-        <li><a href="/goods/{{good.id}}/">{{ good.name }}</a></li>
-        {% endfor %}
-    </ul>
-</div>
-
-<div class="col-sm-9">
-  <div class="row">
+  </div>
+  <div class="row top15">
     {% for good in content_data.goods %}
     <div class="col-sm-4 panel-group">
       <div class="panel panel-default">

@@ -6,14 +6,15 @@ class CategoriesController extends Controller
 
     public function index($data)
     {
-var_dump($data);
+//var_dump($data);
         $categories = Category::getCategories(isset($data['id']) ? $data['id'] : 0);
-        $goods = [];
+        $goods = Good::getGoods(isset($data['id']) ? $data['id'] : 0);
         foreach ($categories as $category => $value) {
+          var_dump($value["id_category"]);
           $goods = array_merge ($goods, Good::getGoods($value["id_category"]));
         }
 
-        //echo "goods";var_dump($goods);
+        //var_dump($goods);
         return ['subcategories' => $categories, 'goods' => $goods];
     }
 }

@@ -26,7 +26,7 @@ class Good extends Model {
     public static function getGoods($categoryId)
     {
         $where = 'WHERE id_category = :category AND status=:status';
-        if (!$categoryId) {
+        if ($categoryId == 0) {
           $where = '';
         }
         return db::getInstance()->Select(
