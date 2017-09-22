@@ -1,51 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script type="text/javascript" src="js/category.js"></script>
-    <body>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="/">Интернет-магазин</a>
-            </div>
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Домой</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              {% if content_data.user != "" %}
-              <li><a href="/users/"><span class="glyphicon glyphicon-user"></span> Пользователь: {{ content_data.user }}</a></li>
-              <li><a href="/users/logout/"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
-              {% else %}
-              <li><a href="/users/registration/"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-              <li><a href="/users/login/"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </nav>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-3">
-              <h1>Категории</h1>
-              <ul class="list-group">
-                  {% for category in categories %}
-                  <li class="list-group-item">
-                      <a href="/categories/{{ category.id_category }}/" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
-                  </li>
-                  {% endfor %}
-              </ul>
-            </div>
-
-
+{% include 'header.html' %}
           <div class="col-sm-9">
             <div class="jumbotron"><h2>Добро пожаловать в наш интернет-магазин!</h2></div>
             <div class="row">
               {% for good in content_data.goods %}
-              <div class="col-sm-4 panel-group">
+              <div class="col-sm-4 panel-group panel-height">
                 <div class="panel panel-default">
                   <div class="panel-heading"><h4>{{ good.name }}</h4></div>
                   <div class="panel-body">
@@ -54,14 +12,20 @@
                     <p>{{ good.description }}</p>
                   </div>
                   <div class="panel-footer">
-                    <a href="/goods/{{good.id}}/">Подробнее</a></div>
+
+                      <a href="/goods/{{good.id}}/">Подробнее</a>
+
+
+                      <a href="#" class="pull-right" onClick = "basket('{{good.id}}')">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+          </a>
+
+
                   </div>
                 </div>
+              </div>
 
               {% endfor %}
             </div>
           </div>
-        </div>
-      </div>
-</body>
-</html>
+{% include 'footer.html' %}

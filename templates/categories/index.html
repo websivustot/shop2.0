@@ -20,7 +20,11 @@
           <p>{{ good.description }}</p>
         </div>
         <div class="panel-footer">
-          <a href="/goods/{{good.id}}/">Подробнее</a></div>
+          <a href="/goods/{{good.id}}/">Подробнее</a>
+          <a href="#" class="pull-right" onClick = "basket('{{good.id}}')">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+          </a>
+        </div>
         </div>
       </div>
 

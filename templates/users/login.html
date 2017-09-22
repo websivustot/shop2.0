@@ -1,4 +1,5 @@
 {% include 'header.html' %}
+<div class="col-sm-9">
 <h1>Авторизация пользователя</h1>
 {% if content_data.user != "" %}
 Привет, {{ content_data.user }}
@@ -33,4 +34,5 @@
 
 Войдите или <a href="/users/registration/">зарегистрируйтесь</a>.
 {% endif %}
+</div>
 {% include 'footer.html' %}

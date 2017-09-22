@@ -45,7 +45,7 @@ class App
                 'title' => $controller->title,
                 'categories' => Category::getCategories(0)
             ];
-            //var_dump($data);
+            //var_dump($_GET);
             $view = $controller->view . '/' . $methodName . '.html'; // формируем имя шаблона
 
             if (!isset($_GET['asAjax'])) {  // если не аякс выводим в шаблон
