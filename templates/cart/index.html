@@ -3,6 +3,8 @@
 
   <div class="row top15">
     <h1>{{ content_data.h1 }}</h1>
+    {% if content_data.message %}<div class="alert alert-info">{{ content_data.message }}</div>
+    {% else %}
     <table class="table">
       <thead><tr><th>Товар</th>
       <th>Количество</th></tr></thead>
@@ -13,8 +15,9 @@
       {% endfor %}
     </tbody>
   </table>
-<button type="button">Оформить покупку</button>
-<button type="button" onClick = "clearBasket('<?=$good['id']?>')">Очистить корзину</button>
+  <button type="button">Оформить покупку</button>
+  <button type="button" onClick = "clearBasket()">Очистить корзину</button>
+  {% endif %}
   </div>
 </div>
 {% include 'footer.html' %}

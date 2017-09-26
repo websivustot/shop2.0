@@ -16,21 +16,21 @@ function basket(goodId) {
         alert('Ошибка добавления товара.');
     });
 }
-function clearBasket(userId){
+function clearBasket(){
   $.ajax({
-      url: '/user/clear_basket.php',
+      url: '/cart/clear/?asAjax=true',
       method: 'GET',
       data: {
-          'user_id': userId
+          'user_id': 'noName'
       },
       dataType: 'json',
       cache: false
-  }).done(function () {
+  }).done(function (res) {
       alert("Корзина очищена");
-  }).fail(function () {
+  }).fail(function (res) {
       alert('Ошибка очистки корзины' + res);
   });
-  document.location.href = '/user/cart';
+  document.location.href = '/cart/';
 }
 function showBasket(){
   document.location.href = '/user/cart';

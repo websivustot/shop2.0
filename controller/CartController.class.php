@@ -3,20 +3,17 @@ class CartController extends Controller
 {
 
     public $view = 'cart';
-    
+
     public function index($data)
     {
-        //var_dump($data);
-        //$goods = Good::getGood($data['id']);
-        //var_dump($goods[0]["id_category"]);
-        //$categories = Category::getCategories($goods[0]['id_category']);
+
         if (isset($_SESSION['cart'])) {
           $cart = Cart::getCart($_SESSION['cart']);
-          //var_dump($cart);
+          return ['cart' => $cart, 'h1' => 'Корзина'];
         }
 
-        //var_dump($categories);
-        return ['cart' => $cart, 'h1' => 'Корзина'];
+        return ['message' => 'Корзина пуста.', 'h1' => 'Корзина'];
+
     }
 
     public function add($data)
@@ -29,8 +26,14 @@ class CartController extends Controller
         }
         $cart = ['user_id' => $user_id, 'good_id' => $_GET['good_id'], 'quantity' => $_GET['quantity']];
         $_SESSION['cart'][] = $cart;
-        return [ 'message' => 'Good is added to cart', 'cart' => $cart ];
+        return [ 'message' => 'Товар добавлен в корзину', 'cart' => $cart ];
 
+    }
+
+    public function clear($data)
+    {
+        unset($_SESSION['cart']);
+        return [ 'message' => 'Корзина очищена'];
     }
 }
 ?>
